@@ -17,7 +17,8 @@ public class Utils {
 		POS_MAP.put("Phrase", "E"); // "give someone a ride"
 		POS_MAP.put("Preposition", "PR"); // around
 		POS_MAP.put("Pronoun", "NR"); // you
-		POS_MAP.put("Verb", "V"); // eat, 食べ�?		POS_MAP.put("Interjection", "I"); // ah
+		POS_MAP.put("Verb", "V"); // eat, 食べ�? POS_MAP.put("Interjection",
+		// "I"); // ah
 		POS_MAP.put("Noun Abbreviation", "NA"); // NASA
 		POS_MAP.put("Proper Noun", "NP"); // Portugal
 		POS_MAP.put("Particle", "PL"); // the
@@ -462,6 +463,20 @@ public class Utils {
 						|| code.equals("ojp") || code.equals("och") || code
 						.startsWith("zh"))) {
 			return true;
+		}
+		return false;
+	}
+
+	public static boolean isEmpty(String string) {
+		if (string == null || string.equals(""))
+			return true;
+		return false;
+	}
+
+	public static boolean equals(String string1, String string2) {
+		if (string1 != null && string2 != null) {
+			if (string1.equals(string2))
+				return true;
 		}
 		return false;
 	}
