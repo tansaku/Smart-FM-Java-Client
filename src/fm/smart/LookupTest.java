@@ -1,5 +1,9 @@
 package fm.smart;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 import junit.framework.TestCase;
 
 import org.json.JSONArray;
@@ -24,6 +28,33 @@ public class LookupTest extends TestCase {
 		super.tearDown();
 	}
 
+	public static String username;
+	public static String password; 
+
+	public static String superusername;
+	public static String superpassword;
+
+	public static String API_KEY;
+	
+	static {
+		Properties prop = new Properties();
+
+		try {
+			// load a properties file
+			prop.load(new FileInputStream("config.properties"));
+
+			username = prop.getProperty("username");
+			password = prop.getProperty("password");
+			superusername = prop.getProperty("superusername");
+			superpassword = prop.getProperty("superpassword");
+			API_KEY = prop.getProperty("API_KEY");
+
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+	}
+
 	public static String search_lang = "ja";
 	public static String result_lang = "en";
 
@@ -31,13 +62,7 @@ public class LookupTest extends TestCase {
 	// should read them from text file for which I check in empty version or
 	// similar ...
 
-	public static String username = "tansaku";
-	public static String password = "samjoseph";
 
-	public static String superusername = "androidapp";
-	public static String superpassword = "samjoseph";
-
-	public static final String API_KEY = "7pvmc285fxnexgwhbfddzkjn";
 
 	public void testLogin() {
 
@@ -108,7 +133,7 @@ public class LookupTest extends TestCase {
 	}
 
 	public void testCreateItem() {
-		String cue = "‚Ä‚¢‚¶‚á‚­";
+		String cue = "Ã‡Æ’Ã‡Â¢Ã‡âˆ‚Ã‡Â·Ã‡â‰ ";
 		String response = "submerged pains";
 		String id = null;
 
@@ -141,8 +166,8 @@ public class LookupTest extends TestCase {
 	}
 
 	public void testCreateExample() {
-		String sentence = "”Ş‚Í–¬”‚ª‚¨‚»‚¢";
-		String sentence_transliteration = "‚©‚ê‚Í‚İ‚á‚­‚Í‚­‚ª‚¨‚»‚¢";
+		String sentence = "å½¼ã¯è„ˆæ‹ãŒãŠãã„";
+		String sentence_transliteration = "ã‹ã‚Œã¯ã¿ã‚ƒãã¯ããŒãŠãã„";
 		String translation = "His pulse is slow.";
 		String sentence_id = null;
 		String translation_id = null;
